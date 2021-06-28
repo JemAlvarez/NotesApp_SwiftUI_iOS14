@@ -26,16 +26,20 @@ struct HomeView: View {
                     print("Deleted ...")
                 })
             }
-            .navigationBarItems(leading: EditButton(), trailing: NavigationButtons())
+            .navigationBarItems(leading: EditButton(), trailing: NavigationButtonsView())
             .navigationTitle("Notes: 15")
         }
     }
 }
 
-struct NavigationButtons: View {
+// navigation view buttons
+struct NavigationButtonsView: View {
     var body: some View {
+        // horizontal
         HStack {
+            // menu
             Menu {
+                // date ascending
                 Button(action: {
                     print("Date Ascending ...")
                 }) {
@@ -45,6 +49,7 @@ struct NavigationButtons: View {
                     }
                 }
                 
+                // date descending
                 Button(action: {
                     print("Date Descending ...")
                 }) {
@@ -54,6 +59,7 @@ struct NavigationButtons: View {
                     }
                 }
                 
+                // title ascending
                 Button(action: {
                     print("Title Ascending ...")
                 }) {
@@ -63,6 +69,7 @@ struct NavigationButtons: View {
                     }
                 }
                 
+                // title descending
                 Button(action: {
                     print("Title Descending ...")
                 }) {
@@ -75,6 +82,7 @@ struct NavigationButtons: View {
                 Image(systemName: "arrow.up.arrow.down.circle")
             }
             
+            // add note
             Button(action: {
                 print("Adding Note ...")
             }) {

@@ -8,6 +8,7 @@ struct PersistenceModel {
     
     let container: NSPersistentContainer
     
+    // init
     init() {
         container = NSPersistentContainer(name: "Notes")
         
@@ -18,6 +19,7 @@ struct PersistenceModel {
         }
     }
     
+    // save data
     func onSaveContext() {
         do {
             try PersistenceModel.shared.container.viewContext.save()
@@ -26,6 +28,7 @@ struct PersistenceModel {
         }
     }
     
+    // add data
     func onAddNote(_ note: NoteModel) {
         let newNote = Note(context: PersistenceModel.shared.container.viewContext)
         newNote.createdDate = note.createdDate
@@ -39,11 +42,13 @@ struct PersistenceModel {
         onSaveContext()
     }
     
+    // delete data
     func onDelete(_ note: Note) {
         PersistenceModel.shared.container.viewContext.delete(note)
         onSaveContext()
     }
     
+    // edit data
     func onEdit(noteCore: Note, noteModel: NoteModel) {
         noteCore.updatedDate = noteModel.updatedDate
         noteCore.title = noteModel.title

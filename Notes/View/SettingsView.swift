@@ -4,8 +4,11 @@ import SwiftUI
 
 struct SettingsView: View {
     var body: some View {
+        // navigation
         NavigationView {
+            // form
             Form {
+                // switch color scheme
                 Section (header: Text("Color Scheme")) {
                     Picker(selection: .constant("Dark"), label: Text("")) {
                         Text("Dark")
@@ -15,6 +18,7 @@ struct SettingsView: View {
                     .pickerStyle(SegmentedPickerStyle())
                 }
                 
+                // app version
                 Section (header: Text("About")) {
                     HStack {
                         Text("Version")
@@ -23,6 +27,7 @@ struct SettingsView: View {
                     }
                 }
                 
+                // reset app settings
                 Section {
                     Button(action: {
                         print("Settings Reseted!")
