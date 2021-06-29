@@ -3,6 +3,10 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @FetchRequest(sortDescriptors: [])
+    var settings: FetchedResults<Settings>
+    @ObservedObject var viewModel = SettingsViewModel()
+    
     var body: some View {
         // navigation
         NavigationView {
@@ -10,12 +14,35 @@ struct SettingsView: View {
             Form {
                 // switch color scheme
                 Section (header: Text("Color Scheme")) {
-                    Picker(selection: .constant("Dark"), label: Text("")) {
-                        Text("Dark")
-                        Text("Light")
-                        Text("System")
+                    Menu {
+                        // dark mode
+                        Button(action: {
+                            viewModel.changeColorScheme(object: settings[0], color: "dark")
+                        }) {
+                            Text("Dark")
+                        }
+                        
+                        // light mode
+                        Button(action: {
+                            viewModel.changeColorScheme(object: settings[0], color: "light")
+                        }) {
+                            Text("Light")
+                        }
+                        
+                        // system
+                        Button(action: {
+                            viewModel.changeColorScheme(object: settings[0], color: "system")
+                        }) {
+                            Text("System")
+                        }
+                    } label: {
+                        HStack {
+                            Text("Selected app color scheme")
+                                .foregroundColor(.secondary)
+                            Spacer()
+                            Text(viewModel.colorScheme.capitalized)
+                        }
                     }
-                    .pickerStyle(SegmentedPickerStyle())
                 }
                 
                 // app version
@@ -23,7 +50,7 @@ struct SettingsView: View {
                     HStack {
                         Text("Version")
                         Spacer()
-                        Text("2.2.1")
+                        Text(viewModel.version ?? "")
                     }
                 }
                 
@@ -37,6 +64,9 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Settings")
+        }
+        .onAppear {
+            viewModel.getColorScheme(settings[0])
         }
     }
 }

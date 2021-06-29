@@ -17,6 +17,7 @@
 		CA6F6000268A384500B34727 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F5FFF268A384500B34727 /* MainTabView.swift */; };
 		CA6F6002268A387400B34727 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F6001268A387400B34727 /* HomeView.swift */; };
 		CA6F6004268A387E00B34727 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F6003268A387E00B34727 /* SettingsView.swift */; };
+		CA956A59268A996000AE5D1D /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA956A58268A996000AE5D1D /* SettingsViewModel.swift */; };
 		CAAFE64A268A4B1E00A38490 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAFE649268A4B1E00A38490 /* NoteView.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		CA6F5FFF268A384500B34727 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		CA6F6001268A387400B34727 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CA6F6003268A387E00B34727 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		CA956A58268A996000AE5D1D /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsViewModel.swift; path = Notes/Model/SettingsViewModel.swift; sourceTree = SOURCE_ROOT; };
 		CAAFE649268A4B1E00A38490 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,6 +112,7 @@
 		CA6F5FF5268A324F00B34727 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				CA956A58268A996000AE5D1D /* SettingsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				CA6F6002268A387400B34727 /* HomeView.swift in Sources */,
 				CA6F5FFC268A349A00B34727 /* PersistenceModel.swift in Sources */,
 				CA6F5FF7268A326F00B34727 /* NoteModel.swift in Sources */,
+				CA956A59268A996000AE5D1D /* SettingsViewModel.swift in Sources */,
 				CA6F5FE5268A31FD00B34727 /* NotesApp.swift in Sources */,
 				CA6F5FFA268A335700B34727 /* NoteDataModel.xcdatamodeld in Sources */,
 				CA6F6000268A384500B34727 /* MainTabView.swift in Sources */,
@@ -329,6 +333,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jemalvarez.Notes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -351,6 +356,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jemalvarez.Notes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

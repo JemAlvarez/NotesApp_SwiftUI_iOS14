@@ -10,7 +10,7 @@ struct PersistenceModel {
     
     // init
     init() {
-        container = NSPersistentContainer(name: "Notes")
+        container = NSPersistentContainer(name: "NoteDataModel")
         
         container.loadPersistentStores { storeDesc, err in
             if let err = err as NSError? {
@@ -43,13 +43,13 @@ struct PersistenceModel {
     }
     
     // delete data
-    func onDelete(_ note: Note) {
-        PersistenceModel.shared.container.viewContext.delete(note)
+    func onDelete(_ item: NSManagedObject) {
+        PersistenceModel.shared.container.viewContext.delete(item)
         onSaveContext()
     }
     
     // edit data
-    func onEdit(noteCore: Note, noteModel: NoteModel) {
+    func onEditNote(noteCore: Note, noteModel: NoteModel) {
         noteCore.updatedDate = noteModel.updatedDate
         noteCore.title = noteModel.title
         noteCore.descriptionNote = noteModel.descriptionNote
