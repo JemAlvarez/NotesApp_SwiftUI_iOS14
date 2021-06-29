@@ -3,7 +3,10 @@
 import SwiftUI
 
 struct HomeView: View {
+    @ObservedObject var homeViewModel = HomeViewModel()
     @Environment(\.colorScheme) var colorScheme
+    @FetchRequest(sortDescriptors: [])
+    var notes: FetchedResults<Note>
     
     var body: some View {
         NavigationView {
@@ -11,13 +14,18 @@ struct HomeView: View {
                 TextField("Search", text: .constant(""))
                     .background(Color(colorScheme == .dark ? .systemGray6 : .white))
                 
-                ForEach (0..<3) { i in
+                // TEMPP
+                NavigationLink(destination: NoteView()) {
+                    Text("TEMP")
+                }
+                
+                ForEach (notes) { note in
                     NavigationLink(destination: NoteView()) {
                         HStack {
-                            Text("Note \(i)")
+                            Text(note.title ?? "Untitled")
                             Spacer()
                             Circle()
-                                .foregroundColor(.blue)
+//                                .foregroundColor()
                                 .frame(width: 15)
                         }
                     }
@@ -27,7 +35,7 @@ struct HomeView: View {
                 })
             }
             .navigationBarItems(leading: EditButton(), trailing: NavigationButtonsView())
-            .navigationTitle("Notes: 15")
+            .navigationTitle("Notes\(notes.count != 0 ? ": \(notes.count)" : "")")
         }
     }
 }

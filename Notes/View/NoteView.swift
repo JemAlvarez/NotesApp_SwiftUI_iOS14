@@ -32,7 +32,7 @@ struct NoteView: View {
                 // note settings
                 Section(header: Text("Note settings")) {
                     // color picker
-                    ColorPicker("Pick note color.", selection: .constant(Color.blue))
+                    ColorPicker("Pick note color.", selection: .constant(.blue))
                     
                     // favorite
                     Toggle("Favorite", isOn: .constant(false))
@@ -77,7 +77,7 @@ struct NoteView: View {
         .navigationTitle("Untitled")
         .navigationBarItems(trailing:
             HStack {
-                Circle().foregroundColor(.blue)
+                Circle().foregroundColor(Color(.sRGB, red: 0.994, green: 0.984, blue: 0.402, opacity: 1))
                     .padding(.trailing)
                 Button(action: shareActionSheet) {
                     Image(systemName: "square.and.arrow.up")
