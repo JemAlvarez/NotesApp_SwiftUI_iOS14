@@ -3,19 +3,16 @@
 import SwiftUI
 
 struct ContentView: View {
-    @FetchRequest(sortDescriptors: [])
-    var settings: FetchedResults<Settings>
+    @State var colorScheme = UserDefaults.standard.string(forKey: "ColorScheme")
     
     var body: some View {
         MainTabView()
-            .onAppear {
-                if settings.isEmpty {
-                    let newSettings = Settings(context: PersistenceModel.shared.container.viewContext)
-                    newSettings.colorScheme = "dark"
-                    PersistenceModel.shared.onSaveContext()
+            .preferredColorScheme(colorScheme == "dark" ? .dark : (colorScheme == "light" ? .light : .none))
+            .onReceive(NotificationCenter.default.publisher(for: UserDefaults.didChangeNotification)) {_ in
+                withAnimation {
+                    colorScheme = UserDefaults.standard.string(forKey: "ColorScheme")
                 }
             }
-            .preferredColorScheme(settings.isEmpty ? .dark : (settings[0].colorScheme == "dark" ? .dark : (settings[0].colorScheme == "light" ? .light : .none)))
     }
 }
 

@@ -43,7 +43,7 @@ struct PersistenceModel {
     }
     
     // delete data
-    func onDelete(_ item: NSManagedObject) {
+    func onDelete(_ item: Note) {
         PersistenceModel.shared.container.viewContext.delete(item)
         onSaveContext()
     }

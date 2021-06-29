@@ -9,11 +9,7 @@
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="updatedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
-    <entity name="Settings" representedClassName=".Settings" syncable="YES" codeGenerationType="class">
-        <attribute name="colorScheme" optional="YES" attributeType="String"/>
-    </entity>
     <elements>
         <element name="Note" positionX="-63" positionY="-18" width="128" height="134"/>
-        <element name="Settings" positionX="-63" positionY="36" width="128" height="44"/>
     </elements>
 </model>

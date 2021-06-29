@@ -3,8 +3,6 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @FetchRequest(sortDescriptors: [])
-    var settings: FetchedResults<Settings>
     @ObservedObject var viewModel = SettingsViewModel()
     
     var body: some View {
@@ -17,21 +15,21 @@ struct SettingsView: View {
                     Menu {
                         // dark mode
                         Button(action: {
-                            viewModel.changeColorScheme(object: settings[0], color: "dark")
+                            viewModel.changeColorScheme(color: "dark")
                         }) {
                             Text("Dark")
                         }
                         
                         // light mode
                         Button(action: {
-                            viewModel.changeColorScheme(object: settings[0], color: "light")
+                            viewModel.changeColorScheme(color: "light")
                         }) {
                             Text("Light")
                         }
                         
                         // system
                         Button(action: {
-                            viewModel.changeColorScheme(object: settings[0], color: "system")
+                            viewModel.changeColorScheme(color: "system")
                         }) {
                             Text("System")
                         }
@@ -40,7 +38,7 @@ struct SettingsView: View {
                             Text("Selected app color scheme")
                                 .foregroundColor(.secondary)
                             Spacer()
-                            Text(viewModel.colorScheme.capitalized)
+                            Text(viewModel.colorScheme?.capitalized ?? "System")
                         }
                     }
                 }
@@ -64,9 +62,6 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Settings")
-        }
-        .onAppear {
-            viewModel.getColorScheme(settings[0])
         }
     }
 }
