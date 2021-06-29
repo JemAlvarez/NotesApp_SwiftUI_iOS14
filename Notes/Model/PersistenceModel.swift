@@ -31,14 +31,14 @@ struct PersistenceModel {
     // add data
     func onAddNote(_ note: NoteModel) {
         let newNote = Note(context: PersistenceModel.shared.container.viewContext)
+        newNote.id = UUID()
         newNote.createdDate = note.createdDate
         newNote.updatedDate = note.updatedDate
         newNote.title = note.title
         newNote.descriptionNote = note.descriptionNote
         newNote.favorite = note.favorite
-        newNote.color = note.color
+        newNote.color = "\(note.color.cgColor?.components![0] ?? 0), \(note.color.cgColor?.components![0] ?? 0), \(note.color.cgColor?.components![2] ?? 0)"
         newNote.locked = note.locked
-        
         onSaveContext()
     }
     
@@ -54,7 +54,7 @@ struct PersistenceModel {
         noteCore.title = noteModel.title
         noteCore.descriptionNote = noteModel.descriptionNote
         noteCore.favorite = noteModel.favorite
-        noteCore.color = noteModel.color
+        noteCore.color = noteModel.color.description
         noteCore.locked = noteModel.locked
         
         onSaveContext()

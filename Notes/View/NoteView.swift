@@ -2,15 +2,19 @@
 
 import SwiftUI
 
-func shareActionSheet() {
-    let items = ["Note"]
-    let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
-    UIApplication.shared.windows.first?.rootViewController?.present(ac, animated: true)
-}
+
 
 struct NoteView: View {
     // env
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    @FetchRequest(sortDescriptors: [])
+    var notes: FetchedResults<Note>
+    @ObservedObject var noteViewModel = NoteViewModel()
+    @State var note: NoteModel
+    @State var coreNote: Note?
+    @State var noteLocked = false
     
     var body: some View {
         // z
@@ -19,26 +23,26 @@ struct NoteView: View {
             Form {
                 // title
                 Section(header: Text("Title")) {
-                    TextField("Title", text: .constant(""))
+                    TextField("Title", text: $note.title)
                         .background(Color(colorScheme == .dark ? .systemGray6 : .white))
                 }
                 
                 // description
                 Section(header: Text("Description")) {
-                    TextEditor(text: .constant(""))
+                    TextEditor(text: $note.descriptionNote)
                         .background(Color(colorScheme == .dark ? .systemGray6 : .white))
                 }
                 
                 // note settings
                 Section(header: Text("Note settings")) {
                     // color picker
-                    ColorPicker("Pick note color.", selection: .constant(.blue))
+                    ColorPicker("Pick note color.", selection: $note.color)
                     
                     // favorite
-                    Toggle("Favorite", isOn: .constant(false))
+                    Toggle("Favorite", isOn: $note.favorite)
                     
                     // locked
-                    Toggle("Locked", isOn: .constant(true))
+                    Toggle("Locked", isOn: $note.locked)
                 }
                 
                 // dates
@@ -47,54 +51,86 @@ struct NoteView: View {
                     HStack {
                         Text("Created Date")
                         Spacer()
-                        Text("Aug 18, 2021 - 10:39 AM")
+                        Text(noteViewModel.onFormatText(note.createdDate))
                             .foregroundColor(.secondary)
+                            .font(.caption)
                     }
                     
                     // updated
                     HStack {
                         Text("Updated Date")
                         Spacer()
-                        Text("Aug 18, 2021 - 10:39 AM")
+                        Text(noteViewModel.onFormatText(note.updatedDate))
                             .foregroundColor(.secondary)
+                            .font(.caption)
                     }
                 }
                 
                 // save note
-                Section(header: Text("Save")) {
+                Section(header: Text("Done")) {
+                    // save
                     Button(action: {
-                        print("Note saved ...")
+                        noteViewModel.onAdd(note: note, coreNote: coreNote, notes: notes)
+                        presentationMode.wrappedValue.dismiss()
                     }) {
-                        Text("Done!")
+                        Text("Save")
+                            .bold()
+                            .foregroundColor(.green)
+                    }
+                    
+                    // delete
+                    Button(action: {
+                        noteViewModel.onDelete(note: note, notes: notes)
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Text("Delete")
+                            .bold()
+                            .foregroundColor(.red)
                     }
                 }
             }
-            .blur(radius: 0) // if note locked blur
+            .blur(radius: noteLocked ? 10 : 0) // if note locked blur
+            .onReceive(Timer.publish(every: 30, on: .main, in: .common).autoconnect()) { time in
+                if coreNote != nil {
+                    note.updatedDate = Date()
+                    noteViewModel.onEdit(noteModel: note, coreNote: coreNote!)
+                }
+            }
             
             // if note locked popup
-//                LockedNoteView()
+            if noteLocked {
+                LockedNoteView(locked: $noteLocked, color: note.color)
+            }
         }
-        .navigationTitle("Untitled")
+        .navigationTitle(noteLocked ? "" : (note.title == "" ? "Untitled" : note.title))
         .navigationBarItems(trailing:
             HStack {
-                Circle().foregroundColor(Color(.sRGB, red: 0.994, green: 0.984, blue: 0.402, opacity: 1))
+                Circle().foregroundColor(note.color)
                     .padding(.trailing)
-                Button(action: shareActionSheet) {
+                Button(action: {
+                    noteViewModel.shareActionSheet(note)
+                }) {
                     Image(systemName: "square.and.arrow.up")
                 }
             }
             .font(.title3)
         )
+        .onAppear {
+            noteLocked = note.locked
+        }
     }
 }
 
 // locked note view popup
 struct LockedNoteView: View {
+    @Binding var locked: Bool
+    var color: Color
+    
     var body: some View {
         // z
         ZStack {
             // blur color
-            Color.blue.edgesIgnoringSafeArea(.all).opacity(0.8)
+            color.edgesIgnoringSafeArea(.all).opacity(0.8)
             
             // v
             VStack {
@@ -103,7 +139,7 @@ struct LockedNoteView: View {
                 
                 // button
                 Button(action: {
-                    print("Unlocking...")
+                    locked = false
                 }) {
                     Text("UNLOCK!")
                         .padding(10)
@@ -121,6 +157,6 @@ struct LockedNoteView: View {
 
 struct NoteView_Previews: PreviewProvider {
     static var previews: some View {
-        NoteView()
+        NoteView(note: Constants.note, coreNote: nil)
     }
 }

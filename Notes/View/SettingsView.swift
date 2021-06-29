@@ -4,6 +4,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @ObservedObject var viewModel = SettingsViewModel()
+    @EnvironmentObject var tabViewModel: TabViewModel
     
     var body: some View {
         // navigation
@@ -16,6 +17,7 @@ struct SettingsView: View {
                         // dark mode
                         Button(action: {
                             viewModel.changeColorScheme(color: "dark")
+                            tabViewModel.selectedTab = 1
                         }) {
                             Text("Dark")
                         }
@@ -23,6 +25,7 @@ struct SettingsView: View {
                         // light mode
                         Button(action: {
                             viewModel.changeColorScheme(color: "light")
+                            tabViewModel.selectedTab = 1
                         }) {
                             Text("Light")
                         }
@@ -30,6 +33,7 @@ struct SettingsView: View {
                         // system
                         Button(action: {
                             viewModel.changeColorScheme(color: "system")
+                            tabViewModel.selectedTab = 1
                         }) {
                             Text("System")
                         }
