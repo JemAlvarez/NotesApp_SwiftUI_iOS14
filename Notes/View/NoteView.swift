@@ -13,7 +13,6 @@ struct NoteView: View {
     @ObservedObject var noteViewModel = NoteViewModel()
     @State var note: NoteModel
     @State var coreNote: Note?
-    @State var noteLocked = false
     
     var body: some View {
         // z
@@ -30,6 +29,31 @@ struct NoteView: View {
                 Section(header: Text("Description")) {
                     TextEditor(text: $note.descriptionNote)
                         .background(Color(colorScheme == .dark ? .systemGray6 : .white))
+                }
+                
+                // image
+                Section(header: Text("Images")) {
+                    if note.images != nil {
+                        TabView {
+                            ForEach(0..<note.images!.count, id: \.self) { i in
+                                note.images![i]
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(height: 140)
+                                    .padding(.vertical)
+                                    .cornerRadius(10)
+                            }
+                        }
+                        .tabViewStyle(PageTabViewStyle())
+                        .frame(height: 200)
+                    }
+                    
+                    Button(action: {
+                        noteViewModel.showingImagePicker = true
+                    }) {
+                        Label("Add Image", systemImage: "photo.on.rectangle.angled")
+                    }
+                    .frame(maxWidth: .infinity, alignment: .center)
                 }
                 
                 // note settings
@@ -88,20 +112,35 @@ struct NoteView: View {
                     }
                 }
             }
-            .blur(radius: noteLocked ? 10 : 0) // if note locked blur
+            .blur(radius: noteViewModel.noteLocked ? 10 : 0) // if note locked blur
             .onReceive(Timer.publish(every: 30, on: .main, in: .common).autoconnect()) { time in
                 if coreNote != nil {
                     note.updatedDate = Date()
                     noteViewModel.onEdit(noteModel: note, coreNote: coreNote!)
                 }
             }
+            // image picker sheet
+            .sheet(isPresented: $noteViewModel.showingImagePicker, onDismiss: {
+                // if loaded image is not nil
+                if noteViewModel.onLoadImage() != nil {
+                    // if theres no images array
+                    if note.images == nil {
+                        note.images = [] // create new array and add
+                        note.images!.append(noteViewModel.onLoadImage()!)
+                    } else { // if theres is image array
+                        note.images!.append(noteViewModel.onLoadImage()!)
+                    }
+                }
+            }) {
+                ImagePickerView(image: $noteViewModel.inputImage)
+            }
             
             // if note locked popup
-            if noteLocked {
-                LockedNoteView(locked: $noteLocked, color: note.color)
+            if noteViewModel.noteLocked {
+                LockedNoteView(locked: $noteViewModel.noteLocked, color: note.color)
             }
         }
-        .navigationTitle(noteLocked ? "" : (note.title == "" ? "Untitled" : note.title))
+        .navigationTitle(noteViewModel.noteLocked ? "" : (note.title == "" ? "Untitled" : note.title))
         .navigationBarItems(trailing:
             HStack {
                 Circle().foregroundColor(Color(UIColor(hexString: UIColor(note.color).hexString, transparency: 1) ?? UIColor(note.color)))
@@ -115,7 +154,7 @@ struct NoteView: View {
             .font(.title3)
         )
         .onAppear {
-            noteLocked = note.locked
+            noteViewModel.noteLocked = note.locked
         }
     }
 }

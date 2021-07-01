@@ -12,5 +12,5 @@ struct NoteModel {
     var color: Color
     var favorite: Bool
     var locked: Bool
-//    var image: Image
+    var images: [Image]?
 }

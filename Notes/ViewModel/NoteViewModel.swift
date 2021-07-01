@@ -4,6 +4,16 @@ import Foundation
 import SwiftUI
 
 class NoteViewModel: ObservableObject {
+    @Published var noteLocked = false
+    @Published var showingImagePicker = false
+    @Published var inputImage: UIImage?
+    
+    // load image
+    func onLoadImage() -> Image? {
+        guard let inputImage = inputImage else {return nil}
+        return Image(uiImage: inputImage)
+    }
+    
     // add
     func onAdd(note: NoteModel, coreNote: Note?, notes: FetchedResults<Note>) {
         if coreNote == nil {
