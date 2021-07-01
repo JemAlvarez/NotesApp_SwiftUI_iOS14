@@ -7,11 +7,20 @@ class NoteViewModel: ObservableObject {
     @Published var noteLocked = false
     @Published var showingImagePicker = false
     @Published var inputImage: UIImage?
+    @Published var selectedImage = 0
     
     // load image
     func onLoadImage() -> Image? {
         guard let inputImage = inputImage else {return nil}
         return Image(uiImage: inputImage)
+    }
+    
+    // remove image
+    func removeImage(images: [Image], index: Int) -> [Image] {
+        var newImages = images
+        newImages.remove(at: index)
+        
+        return newImages
     }
     
     // add

@@ -34,18 +34,40 @@ struct NoteView: View {
                 // image
                 Section(header: Text("Images")) {
                     if note.images != nil {
-                        TabView {
-                            ForEach(0..<note.images!.count, id: \.self) { i in
-                                note.images![i]
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(height: 140)
-                                    .padding(.vertical)
-                                    .cornerRadius(10)
+                        if note.images!.count != 0 {
+                            VStack {
+                                Text("\(note.images!.count) Image\(note.images!.count == 1 ? "" : "s")")
+                                    .foregroundColor(.secondary)
+                                
+                                TabView (selection: $noteViewModel.selectedImage) {
+                                    ForEach(0..<note.images!.count, id: \.self) { i in
+                                        VStack {
+                                            note.images![i]
+                                                .resizable()
+                                                .scaledToFill()
+                                                .frame(height: 140)
+                                                .padding(.vertical)
+                                                .cornerRadius(10)
+                                                .tag(i)
+                                            
+                                            Button(action: {
+                                                note.images = noteViewModel.removeImage(images: note.images!, index: i)
+                                            }) {
+                                                Label("Delete Image", systemImage: "trash.circle.fill")
+                                            }
+                                            .foregroundColor(.white)
+                                            .frame(maxWidth: .infinity)
+                                            .padding(.vertical, 10)
+                                            .background(Color.red)
+                                            .cornerRadius(10)
+                                        }
+                                        .padding(.horizontal)
+                                    }
+                                }
+                                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                                .frame(height: 250)
                             }
                         }
-                        .tabViewStyle(PageTabViewStyle())
-                        .frame(height: 200)
                     }
                     
                     Button(action: {
