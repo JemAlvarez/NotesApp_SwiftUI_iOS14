@@ -8,10 +8,14 @@ class NoteViewModel: ObservableObject {
     @Published var showingImagePicker = false
     @Published var inputImage: UIImage?
     @Published var selectedImage = 0
+    @Published var uiImages: [UIImage] = []
     
     // load image
-    func onLoadImage() -> Image? {
+    func onLoadImage(_ save: Bool) -> Image? {
         guard let inputImage = inputImage else {return nil}
+        if save {
+            uiImages.append(inputImage)
+        }
         return Image(uiImage: inputImage)
     }
     
@@ -19,7 +23,7 @@ class NoteViewModel: ObservableObject {
     func removeImage(images: [Image], index: Int) -> [Image] {
         var newImages = images
         newImages.remove(at: index)
-        
+        uiImages.remove(at: index)
         return newImages
     }
     
@@ -75,15 +79,23 @@ class NoteViewModel: ObservableObject {
         return nil
     }
 
-    
+    // share
     func shareActionSheet(_ note: NoteModel) {
         if !note.title.isEmpty || !note.descriptionNote.isEmpty {
-            var items: [String] = []
+            var items: [Any] = []
             
             if note.title.isEmpty {
                 items = ["Untitled Note", note.descriptionNote]
-            } else {
+            } else if note.descriptionNote.isEmpty {
                 items = [note.title, "No note description"]
+            } else {
+                items = [note.title, note.descriptionNote]
+            }
+            
+            if !uiImages.isEmpty {
+                for image in uiImages {
+                    items.append(image)
+                }
             }
             
             let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)

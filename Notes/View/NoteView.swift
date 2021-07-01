@@ -144,13 +144,13 @@ struct NoteView: View {
             // image picker sheet
             .sheet(isPresented: $noteViewModel.showingImagePicker, onDismiss: {
                 // if loaded image is not nil
-                if noteViewModel.onLoadImage() != nil {
+                if noteViewModel.onLoadImage(false) != nil {
                     // if theres no images array
                     if note.images == nil {
                         note.images = [] // create new array and add
-                        note.images!.append(noteViewModel.onLoadImage()!)
+                        note.images!.append(noteViewModel.onLoadImage(true)!)
                     } else { // if theres is image array
-                        note.images!.append(noteViewModel.onLoadImage()!)
+                        note.images!.append(noteViewModel.onLoadImage(true)!)
                     }
                 }
             }) {
