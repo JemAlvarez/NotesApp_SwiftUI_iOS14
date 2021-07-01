@@ -1,6 +1,7 @@
 //
 
 import Foundation
+import SwiftUI
 import CoreData
 
 struct PersistenceModel {
@@ -37,7 +38,7 @@ struct PersistenceModel {
         newNote.title = note.title
         newNote.descriptionNote = note.descriptionNote
         newNote.favorite = note.favorite
-        newNote.color = "\(note.color.cgColor?.components![0] ?? 0), \(note.color.cgColor?.components![0] ?? 0), \(note.color.cgColor?.components![2] ?? 0)"
+        newNote.color = UIColor(note.color).hexString
         newNote.locked = note.locked
         onSaveContext()
     }

@@ -1,8 +1,7 @@
 //
 
 import SwiftUI
-
-
+import SwifterSwift
 
 struct NoteView: View {
     // env
@@ -105,7 +104,7 @@ struct NoteView: View {
         .navigationTitle(noteLocked ? "" : (note.title == "" ? "Untitled" : note.title))
         .navigationBarItems(trailing:
             HStack {
-                Circle().foregroundColor(note.color)
+                Circle().foregroundColor(Color(UIColor(hexString: UIColor(note.color).hexString, transparency: 1) ?? UIColor(note.color)))
                     .padding(.trailing)
                 Button(action: {
                     noteViewModel.shareActionSheet(note)

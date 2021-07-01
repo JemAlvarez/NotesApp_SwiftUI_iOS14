@@ -23,7 +23,7 @@ class NoteViewModel: ObservableObject {
         coreNote.updatedDate = noteModel.updatedDate
         coreNote.title = noteModel.title
         coreNote.descriptionNote = noteModel.descriptionNote
-        coreNote.color = "\(noteModel.color.cgColor?.components![0] ?? 0), \(noteModel.color.cgColor?.components![0] ?? 0), \(noteModel.color.cgColor?.components![2] ?? 0)"
+        coreNote.color = UIColor(noteModel.color).hexString
         coreNote.favorite = noteModel.favorite
         coreNote.locked = noteModel.locked
         PersistenceModel.shared.onSaveContext()

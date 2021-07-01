@@ -14,7 +14,7 @@ struct CustomListView: View {
         List() {
             ForEach(notes) { note in
                 NavigationLink(destination:
-                                NoteView(note: NoteModel(id: note.id, createdDate: note.createdDate ?? Date(), updatedDate: note.updatedDate ?? Date(), title: note.title ?? "", descriptionNote: note.descriptionNote ?? "", color: homeViewModel.getColor(note.color ?? ""), favorite: note.favorite, locked: note.locked), coreNote: note)
+                                NoteView(note: NoteModel(id: note.id, createdDate: note.createdDate ?? Date(), updatedDate: note.updatedDate ?? Date(), title: note.title ?? "", descriptionNote: note.descriptionNote ?? "", color: Color(UIColor(hexString: note.color ?? "") ?? .white), favorite: note.favorite, locked: note.locked), coreNote: note)
                 ) {
                     HStack {
                         Text(note.title! == "" ? "Untitled": note.title!)
@@ -24,7 +24,7 @@ struct CustomListView: View {
                                 .foregroundColor(.yellow)
                         }
                         Circle()
-                            .foregroundColor(homeViewModel.getColor(note.color ?? ""))
+                            .foregroundColor(Color(UIColor(hexString: note.color ?? "") ?? .white))
                             .frame(width: 15)
                     }
                     .contextMenu(
