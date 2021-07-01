@@ -23,6 +23,10 @@ struct CustomListView: View {
                             Image(systemName: "star.fill")
                                 .foregroundColor(.yellow)
                         }
+                        if note.locked {
+                            Image(systemName: "lock.fill")
+                                .foregroundColor(.red)
+                        }
                         Circle()
                             .foregroundColor(Color(UIColor(hexString: note.color ?? "") ?? .white))
                             .frame(width: 15)

@@ -19,6 +19,8 @@ struct NavigationButtonsView: View {
                     Label("Update Date", systemImage: "arrow.down.circle").tag(3)
                     Label("Title", systemImage: "arrow.up.circle").tag(4)
                     Label("Title", systemImage: "arrow.down.circle").tag(5)
+                    Label("Favorite", systemImage: "arrow.up.circle").tag(6)
+                    Label("Favorite", systemImage: "arrow.down.circle").tag(7)
                 }
             } label: {
                 Image(systemName: "arrow.up.arrow.down.circle")
@@ -44,6 +46,10 @@ struct NavigationButtonsView: View {
                     sorting = [NSSortDescriptor(keyPath: \Note.title, ascending: true)]
                 case 5:
                     sorting = [NSSortDescriptor(keyPath: \Note.title, ascending: false)]
+                case 6:
+                    sorting = [NSSortDescriptor(keyPath: \Note.favorite, ascending: true)]
+                case 7:
+                    sorting = [NSSortDescriptor(keyPath: \Note.favorite, ascending: false)]
                 default:
                     sorting = [NSSortDescriptor(keyPath: \Note.createdDate, ascending: true)]
                 }
