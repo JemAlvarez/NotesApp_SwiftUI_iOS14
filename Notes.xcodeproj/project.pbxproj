@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,7 @@
 		CA268BF5268B7D4900B449E5 /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA268BF4268B7D4900B449E5 /* NoteViewModel.swift */; };
 		CA268BF7268B7F0800B449E5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA268BF6268B7F0800B449E5 /* Constants.swift */; };
 		CA34D1D0268D5B8D007E260C /* LockedNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA34D1CF268D5B8D007E260C /* LockedNoteView.swift */; };
+		CA34D1D3268D64E6007E260C /* SwifterSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CA34D1D2268D64E6007E260C /* SwifterSwift */; };
 		CA6F5FE5268A31FD00B34727 /* NotesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F5FE4268A31FD00B34727 /* NotesApp.swift */; };
 		CA6F5FE7268A31FD00B34727 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F5FE6268A31FD00B34727 /* ContentView.swift */; };
 		CA6F5FE9268A320000B34727 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA6F5FE8268A320000B34727 /* Assets.xcassets */; };
@@ -57,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA34D1D3268D64E6007E260C /* SwifterSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +156,9 @@
 			dependencies = (
 			);
 			name = Notes;
+			packageProductDependencies = (
+				CA34D1D2268D64E6007E260C /* SwifterSwift */,
+			);
 			productName = Notes;
 			productReference = CA6F5FE1268A31FD00B34727 /* Notes.app */;
 			productType = "com.apple.product-type.application";
@@ -181,6 +186,9 @@
 				Base,
 			);
 			mainGroup = CA6F5FD8268A31FD00B34727;
+			packageReferences = (
+				CA34D1D1268D64E6007E260C /* XCRemoteSwiftPackageReference "SwifterSwift" */,
+			);
 			productRefGroup = CA6F5FE2268A31FD00B34727 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -414,6 +422,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CA34D1D1268D64E6007E260C /* XCRemoteSwiftPackageReference "SwifterSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwifterSwift/SwifterSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CA34D1D2268D64E6007E260C /* SwifterSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA34D1D1268D64E6007E260C /* XCRemoteSwiftPackageReference "SwifterSwift" */;
+			productName = SwifterSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		CA6F5FF8268A335700B34727 /* NoteDataModel.xcdatamodeld */ = {
