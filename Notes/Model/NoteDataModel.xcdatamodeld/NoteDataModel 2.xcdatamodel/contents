@@ -9,8 +9,14 @@
         <attribute name="locked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="updatedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="image" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NoteImage" inverseName="note" inverseEntity="NoteImage"/>
+    </entity>
+    <entity name="NoteImage" representedClassName="NoteImage" syncable="YES">
+        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="image" inverseEntity="Note"/>
     </entity>
     <elements>
-        <element name="Note" positionX="-63" positionY="-18" width="128" height="149"/>
+        <element name="Note" positionX="-390.8419799804688" positionY="162.0638732910156" width="128" height="178"/>
+        <element name="NoteImage" positionX="-63" positionY="45" width="128" height="59"/>
     </elements>
 </model>

@@ -30,7 +30,7 @@ struct PersistenceModel {
     }
     
     // add data
-    func onAddNote(_ note: NoteModel) {
+    func onAddNote(_ note: NoteModel, images: [UIImage]) {
         let newNote = Note(context: PersistenceModel.shared.container.viewContext)
         newNote.id = UUID()
         newNote.createdDate = note.createdDate
@@ -40,24 +40,29 @@ struct PersistenceModel {
         newNote.favorite = note.favorite
         newNote.color = UIColor(note.color).hexString
         newNote.locked = note.locked
+        
+        for image in images {
+            let newImage = NoteImage(context: PersistenceModel.shared.container.viewContext)
+            newImage.image = imageToData(image)
+            newImage.note = newNote
+        }
+        
         onSaveContext()
     }
     
     // delete data
-    func onDelete(_ item: Note) {
+    func onDelete(_ item: NSManagedObject) {
         PersistenceModel.shared.container.viewContext.delete(item)
         onSaveContext()
     }
     
-    // edit data
-    func onEditNote(noteCore: Note, noteModel: NoteModel) {
-        noteCore.updatedDate = noteModel.updatedDate
-        noteCore.title = noteModel.title
-        noteCore.descriptionNote = noteModel.descriptionNote
-        noteCore.favorite = noteModel.favorite
-        noteCore.color = noteModel.color.description
-        noteCore.locked = noteModel.locked
-        
-        onSaveContext()
+    // convert image to data
+    func imageToData(_ image: UIImage) -> Data {
+        return image.jpegData(compressionQuality: 1)!
+    }
+    
+    // convert data to image
+    func dataToImage(_ data: Data) -> UIImage {
+        return UIImage(data: data)!
     }
 }

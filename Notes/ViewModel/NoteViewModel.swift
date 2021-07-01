@@ -11,44 +11,46 @@ class NoteViewModel: ObservableObject {
     @Published var uiImages: [UIImage] = []
     
     // load image
-    func onLoadImage(_ save: Bool) -> Image? {
-        guard let inputImage = inputImage else {return nil}
-        if save {
+    func onLoadImage() {
+        guard let inputImage = inputImage else {return}
+        if uiImages.count < 5 {
             uiImages.append(inputImage)
         }
-        return Image(uiImage: inputImage)
     }
     
     // remove image
-    func removeImage(images: [Image], index: Int) -> [Image] {
-        var newImages = images
-        newImages.remove(at: index)
+    func removeImage(index: Int) {
         uiImages.remove(at: index)
-        return newImages
     }
     
     // add
-    func onAdd(note: NoteModel, coreNote: Note?, notes: FetchedResults<Note>) {
+    func onAdd(note: NoteModel, coreNote: Note?) {
         if coreNote == nil {
-            PersistenceModel.shared.onAddNote(note)
+            PersistenceModel.shared.onAddNote(note, images: uiImages)
         } else {
-            let foundNote = onFindNote(notes: notes, note: note)
-            
-            if foundNote != nil {
-                onEdit(noteModel: note, coreNote: foundNote!)
-            }
+            onEdit(noteModel: note, coreNote: coreNote!)
         }
     }
     
     // edit
     func onEdit(noteModel: NoteModel, coreNote: Note) {
-        coreNote.createdDate = noteModel.createdDate
         coreNote.updatedDate = noteModel.updatedDate
         coreNote.title = noteModel.title
         coreNote.descriptionNote = noteModel.descriptionNote
         coreNote.color = UIColor(noteModel.color).hexString
         coreNote.favorite = noteModel.favorite
         coreNote.locked = noteModel.locked
+        
+        for image in coreNote.imagesArray {
+            PersistenceModel.shared.onDelete(image)
+        }
+        
+        for image in uiImages {
+            let newImage = NoteImage(context: PersistenceModel.shared.container.viewContext)
+            newImage.image = PersistenceModel.shared.imageToData(image)
+            newImage.note = coreNote
+        }
+        
         PersistenceModel.shared.onSaveContext()
     }
     

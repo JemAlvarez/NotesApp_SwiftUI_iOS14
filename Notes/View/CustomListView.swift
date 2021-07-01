@@ -14,10 +14,12 @@ struct CustomListView: View {
         List() {
             ForEach(notes) { note in
                 NavigationLink(destination:
-                                NoteView(note: NoteModel(id: note.id, createdDate: note.createdDate ?? Date(), updatedDate: note.updatedDate ?? Date(), title: note.title ?? "", descriptionNote: note.descriptionNote ?? "", color: Color(UIColor(hexString: note.color ?? "") ?? .white), favorite: note.favorite, locked: note.locked), coreNote: note)
+                                NoteView(note:
+                                            NoteModel(id: note.id, createdDate: note.createdDate ?? Date(), updatedDate: note.updatedDate ?? Date(), title: note.title ?? "", descriptionNote: note.descriptionNote ?? "", color: Color(UIColor(hexString: note.color ?? "") ?? .white), favorite: note.favorite, locked: note.locked),
+                                         coreNote: note)
                 ) {
                     HStack {
-                        Text(note.title! == "" ? "Untitled": note.title!)
+                        Text(note.title ?? "" == "" ? "Untitled": note.title!)
                         Spacer()
                         if note.favorite {
                             Image(systemName: "star.fill")
@@ -39,6 +41,11 @@ struct CustomListView: View {
                 }
             }
             .onDelete(perform: { indexSet in homeViewModel.onDelete(notes: notes, offsets: indexSet)})
+//            .onAppear {
+//                for note in notes {
+//                    print("NOTE", note.imagesArray)
+//                }
+//            }
         }
     }
     

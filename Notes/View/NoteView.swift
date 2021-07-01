@@ -14,6 +14,8 @@ struct NoteView: View {
     @State var note: NoteModel
     @State var coreNote: Note?
     
+    @State var runOnDisappear = true
+    
     var body: some View {
         // z
         ZStack {
@@ -33,40 +35,43 @@ struct NoteView: View {
                 
                 // image
                 Section(header: Text("Images")) {
-                    if note.images != nil {
-                        if note.images!.count != 0 {
-                            VStack {
-                                Text("\(note.images!.count) Image\(note.images!.count == 1 ? "" : "s")")
-                                    .foregroundColor(.secondary)
-                                
-                                TabView (selection: $noteViewModel.selectedImage) {
-                                    ForEach(0..<note.images!.count, id: \.self) { i in
-                                        VStack {
-                                            note.images![i]
-                                                .resizable()
-                                                .scaledToFill()
-                                                .frame(height: 140)
-                                                .padding(.vertical)
-                                                .cornerRadius(10)
-                                                .tag(i)
-                                            
-                                            Button(action: {
-                                                note.images = noteViewModel.removeImage(images: note.images!, index: i)
-                                            }) {
-                                                Label("Delete Image", systemImage: "trash.circle.fill")
-                                            }
-                                            .foregroundColor(.white)
-                                            .frame(maxWidth: .infinity)
-                                            .padding(.vertical, 10)
-                                            .background(Color.red)
+                    if noteViewModel.uiImages.count != 0 {
+                        VStack {
+                            Text("\(noteViewModel.uiImages.count) Image\(noteViewModel.uiImages.count == 1 ? "" : "s") \(noteViewModel.uiImages.count == 5 ? "(MAX)" : "")")
+                                .foregroundColor(.secondary)
+                            
+                            TabView (selection: $noteViewModel.selectedImage) {
+                                ForEach(0..<noteViewModel.uiImages.count, id: \.self) { i in
+                                    VStack {
+                                        Image(uiImage: noteViewModel.uiImages[i])
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(height: 140)
+                                            .padding(.vertical)
                                             .cornerRadius(10)
+                                            .tag(i)
+                                            .contextMenu(
+                                                ContextMenu {
+                                                    Text("Nothing to see here 😉")
+                                                }
+                                            )
+                                        
+                                        Button(action: {
+                                            noteViewModel.removeImage(index: i)
+                                        }) {
+                                            Label("Delete Image", systemImage: "trash.circle.fill")
                                         }
-                                        .padding(.horizontal)
+                                        .foregroundColor(.white)
+                                        .frame(maxWidth: .infinity)
+                                        .padding(.vertical, 10)
+                                        .background(Color.red)
+                                        .cornerRadius(10)
                                     }
+                                    .padding(.horizontal)
                                 }
-                                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                                .frame(height: 250)
                             }
+                            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                            .frame(height: 250)
                         }
                     }
                     
@@ -115,7 +120,8 @@ struct NoteView: View {
                 Section(header: Text("Done")) {
                     // save
                     Button(action: {
-                        noteViewModel.onAdd(note: note, coreNote: coreNote, notes: notes)
+                        runOnDisappear = false
+                        noteViewModel.onAdd(note: note, coreNote: coreNote)
                         presentationMode.wrappedValue.dismiss()
                     }) {
                         Text("Save")
@@ -125,6 +131,7 @@ struct NoteView: View {
                     
                     // delete
                     Button(action: {
+                        runOnDisappear = false
                         noteViewModel.onDelete(note: note, notes: notes)
                         presentationMode.wrappedValue.dismiss()
                     }) {
@@ -135,25 +142,7 @@ struct NoteView: View {
                 }
             }
             .blur(radius: noteViewModel.noteLocked ? 10 : 0) // if note locked blur
-            .onReceive(Timer.publish(every: 30, on: .main, in: .common).autoconnect()) { time in
-                if coreNote != nil {
-                    note.updatedDate = Date()
-                    noteViewModel.onEdit(noteModel: note, coreNote: coreNote!)
-                }
-            }
-            // image picker sheet
-            .sheet(isPresented: $noteViewModel.showingImagePicker, onDismiss: {
-                // if loaded image is not nil
-                if noteViewModel.onLoadImage(false) != nil {
-                    // if theres no images array
-                    if note.images == nil {
-                        note.images = [] // create new array and add
-                        note.images!.append(noteViewModel.onLoadImage(true)!)
-                    } else { // if theres is image array
-                        note.images!.append(noteViewModel.onLoadImage(true)!)
-                    }
-                }
-            }) {
+            .sheet(isPresented: $noteViewModel.showingImagePicker, onDismiss: noteViewModel.onLoadImage) {
                 ImagePickerView(image: $noteViewModel.inputImage)
             }
             
@@ -177,6 +166,22 @@ struct NoteView: View {
         )
         .onAppear {
             noteViewModel.noteLocked = note.locked
+            
+            noteViewModel.uiImages = []
+            
+            if coreNote != nil {
+                for image in coreNote!.imagesArray {
+                    noteViewModel.uiImages.append(UIImage(data: image.image!)!)
+                }
+            }
+        }
+        .onDisappear {
+            if runOnDisappear {
+                if coreNote != nil {
+                    note.updatedDate = Date()
+                    noteViewModel.onEdit(noteModel: note, coreNote: coreNote!)
+                }
+            }
         }
     }
 }
