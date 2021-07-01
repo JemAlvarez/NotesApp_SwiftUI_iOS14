@@ -12,7 +12,9 @@ struct SettingsView: View {
             // form
             Form {
                 // switch color scheme
-                Section (header: Text("Color Scheme")) {
+                Section (header: Text("App Appearance")) {
+                    
+                    // color scheme
                     Menu {
                         // dark mode
                         Button(action: {
@@ -39,13 +41,52 @@ struct SettingsView: View {
                         }
                     } label: {
                         HStack {
-                            Text("Selected app color scheme")
+                            Text("Color Scheme")
                                 .foregroundColor(.secondary)
                             Spacer()
                             Text(viewModel.colorScheme?.capitalized ?? "System")
                         }
                     }
                 }
+                
+                // app icon
+                Section {
+                    Text("App Icon")
+                        .foregroundColor(.secondary)
+                    
+                    HStack {
+                        Image("default_icon")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 50)
+                            .cornerRadius(10)
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            viewModel.setIcon(nil)
+                        }) {
+                            Text("Default")
+                        }
+                    }
+                    
+                    HStack {
+                        Image("dark_icon")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 50)
+                            .cornerRadius(10)
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            viewModel.setIcon("Dark")
+                        }) {
+                            Text("Dark")
+                        }
+                    }
+                }
+                .padding(.vertical, 15)
                 
                 // app version
                 Section (header: Text("About")) {
@@ -59,7 +100,7 @@ struct SettingsView: View {
                 // reset app settings
                 Section {
                     Button(action: {
-                        print("Settings Reseted!")
+                        viewModel.resetAllSettings()
                     }) {
                         Text("Reset All Settings")
                     }

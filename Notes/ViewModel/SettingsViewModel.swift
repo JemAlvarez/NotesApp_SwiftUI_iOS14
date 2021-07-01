@@ -11,4 +11,19 @@ class SettingsViewModel: ObservableObject {
         self.colorScheme = color
         UserDefaults.standard.set(color, forKey: "ColorScheme")
     }
+    
+    func setIcon(_ icon: String?) {
+        UIApplication.shared.setAlternateIconName(icon) { error in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print("Success!")
+            }
+        }
+    }
+    
+    func resetAllSettings () {
+        changeColorScheme(color: "system")
+        setIcon(nil)
+    }
 }
