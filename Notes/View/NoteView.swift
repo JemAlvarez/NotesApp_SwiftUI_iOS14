@@ -19,116 +19,110 @@ struct NoteView: View {
     var body: some View {
         // z
         ZStack {
-            // form
-            Form {
-                // title
-                Section(header: Text("Title")) {
-                    TextField("Title", text: $note.title)
-                        .background(Color(colorScheme == .dark ? .systemGray6 : .white))
-                }
-                
-                // description
-                Section(header: Text("Description")) {
-                    TextEditor(text: $note.descriptionNote)
-                        .background(Color(colorScheme == .dark ? .systemGray6 : .white))
-                }
-                
-                // image
-                Section(header: Text("Images")) {
-                    if noteViewModel.uiImages.count != 0 {
-                        VStack {
-                            Text("\(noteViewModel.uiImages.count) Image\(noteViewModel.uiImages.count == 1 ? "" : "s") \(noteViewModel.uiImages.count == 5 ? "(MAX)" : "")")
-                                .foregroundColor(.secondary)
-                            
-                            TabView (selection: $noteViewModel.selectedImage) {
-                                ForEach(0..<noteViewModel.uiImages.count, id: \.self) { i in
-                                    VStack {
-                                        Image(uiImage: noteViewModel.uiImages[i])
-                                            .resizable()
-                                            .scaledToFill()
-                                            .frame(height: 140)
-                                            .padding(.vertical)
+            VStack {
+                // form
+                Form {
+                    // title
+                    Section(header: Text("Title")) {
+                        TextField("Title", text: $note.title)
+                            .background(Color(colorScheme == .dark ? .systemGray6 : .white))
+                    }
+                    
+                    // description
+                    Section(header: Text("Description")) {
+                        TextEditor(text: $note.descriptionNote)
+                            .background(Color(colorScheme == .dark ? .systemGray6 : .white))
+                    }
+                    
+                    // image
+                    Section(header: Text("Images")) {
+                        if noteViewModel.uiImages.count != 0 {
+                            VStack {
+                                Text("\(noteViewModel.uiImages.count) Image\(noteViewModel.uiImages.count == 1 ? "" : "s") \(noteViewModel.uiImages.count == 5 ? "(MAX)" : "")")
+                                    .foregroundColor(.secondary)
+                                
+                                TabView (selection: $noteViewModel.selectedImage) {
+                                    ForEach(0..<noteViewModel.uiImages.count, id: \.self) { i in
+                                        VStack {
+                                            Image(uiImage: noteViewModel.uiImages[i])
+                                                .resizable()
+                                                .scaledToFill()
+                                                .frame(height: 140)
+                                                .padding(.vertical)
+                                                .cornerRadius(10)
+                                                .tag(i)
+                                                .contextMenu(
+                                                    ContextMenu {
+                                                        Text("Nothing to see here 😉")
+                                                    }
+                                                )
+                                            
+                                            Button(action: {
+                                                noteViewModel.removeImage(index: i)
+                                            }) {
+                                                Label("Delete Image", systemImage: "trash.circle.fill")
+                                            }
+                                            .foregroundColor(.white)
+                                            .frame(maxWidth: .infinity)
+                                            .padding(.vertical, 10)
+                                            .background(Color.red)
                                             .cornerRadius(10)
-                                            .tag(i)
-                                            .contextMenu(
-                                                ContextMenu {
-                                                    Text("Nothing to see here 😉")
-                                                }
-                                            )
-                                        
-                                        Button(action: {
-                                            noteViewModel.removeImage(index: i)
-                                        }) {
-                                            Label("Delete Image", systemImage: "trash.circle.fill")
                                         }
-                                        .foregroundColor(.white)
-                                        .frame(maxWidth: .infinity)
-                                        .padding(.vertical, 10)
-                                        .background(Color.red)
-                                        .cornerRadius(10)
+                                        .padding(.horizontal)
                                     }
-                                    .padding(.horizontal)
                                 }
+                                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                                .frame(height: 250)
                             }
-                            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                            .frame(height: 250)
+                        }
+                        
+                        Button(action: {
+                            noteViewModel.showingImagePicker = true
+                        }) {
+                            Label("Add Image", systemImage: "photo.on.rectangle.angled")
+                        }
+                        .frame(maxWidth: .infinity, alignment: .center)
+                    }
+                    
+                    // note settings
+                    Section(header: Text("Note settings")) {
+                        // color picker
+                        ColorPicker("Pick note color.", selection: $note.color)
+                        
+                        // favorite
+                        Toggle("Favorite", isOn: $note.favorite)
+                        
+                        // locked
+                        Toggle("Locked", isOn: $note.locked)
+                    }
+                    
+                    // dates
+                    Section(header: Text("Dates")) {
+                        // created
+                        HStack {
+                            Text("Created Date")
+                            Spacer()
+                            Text(noteViewModel.onFormatText(note.createdDate))
+                                .foregroundColor(.secondary)
+                                .font(.caption)
+                        }
+                        
+                        // updated
+                        HStack {
+                            Text("Updated Date")
+                            Spacer()
+                            Text(noteViewModel.onFormatText(note.updatedDate))
+                                .foregroundColor(.secondary)
+                                .font(.caption)
                         }
                     }
-                    
-                    Button(action: {
-                        noteViewModel.showingImagePicker = true
-                    }) {
-                        Label("Add Image", systemImage: "photo.on.rectangle.angled")
-                    }
-                    .frame(maxWidth: .infinity, alignment: .center)
+                }
+                .sheet(isPresented: $noteViewModel.showingImagePicker, onDismiss: noteViewModel.onLoadImage) {
+                    ImagePickerView(image: $noteViewModel.inputImage)
                 }
                 
-                // note settings
-                Section(header: Text("Note settings")) {
-                    // color picker
-                    ColorPicker("Pick note color.", selection: $note.color)
-                    
-                    // favorite
-                    Toggle("Favorite", isOn: $note.favorite)
-                    
-                    // locked
-                    Toggle("Locked", isOn: $note.locked)
-                }
-                
-                // dates
-                Section(header: Text("Dates")) {
-                    // created
-                    HStack {
-                        Text("Created Date")
-                        Spacer()
-                        Text(noteViewModel.onFormatText(note.createdDate))
-                            .foregroundColor(.secondary)
-                            .font(.caption)
-                    }
-                    
-                    // updated
-                    HStack {
-                        Text("Updated Date")
-                        Spacer()
-                        Text(noteViewModel.onFormatText(note.updatedDate))
-                            .foregroundColor(.secondary)
-                            .font(.caption)
-                    }
-                }
-                
-                // save note
-                Section(header: Text("Done")) {
-                    // save
-                    Button(action: {
-                        runOnDisappear = false
-                        noteViewModel.onAdd(note: note, coreNote: coreNote)
-                        presentationMode.wrappedValue.dismiss()
-                    }) {
-                        Text("Save")
-                            .bold()
-                            .foregroundColor(.green)
-                    }
-                    
+                // done
+                HStack (spacing: 15) {
                     // delete
                     Button(action: {
                         runOnDisappear = false
@@ -139,12 +133,29 @@ struct NoteView: View {
                             .bold()
                             .foregroundColor(.red)
                     }
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color(colorScheme == .dark ? .systemGray6 : .systemGray5))
+                    .cornerRadius(10)
+                    
+                    // save
+                    Button(action: {
+                        runOnDisappear = false
+                        noteViewModel.onAdd(note: note, coreNote: coreNote)
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Text("Save")
+                            .bold()
+                            .foregroundColor(.white)
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.blue)
+                    .cornerRadius(10)
                 }
+                .padding()
             }
-            .blur(radius: noteViewModel.noteLocked ? 10 : 0) // if note locked blur
-            .sheet(isPresented: $noteViewModel.showingImagePicker, onDismiss: noteViewModel.onLoadImage) {
-                ImagePickerView(image: $noteViewModel.inputImage)
-            }
+            .blur(radius: noteViewModel.noteLocked ? 10 : 0) // if note locked bluR
             
             // if note locked popup
             if noteViewModel.noteLocked {
