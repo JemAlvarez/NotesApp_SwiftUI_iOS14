@@ -23,6 +23,7 @@ struct HomeView: View {
             .navigationBarItems(leading: EditButton(), trailing: NavigationButtonsView(sorting: $sorting))
             .navigationTitle("Notes\(notes.count != 0 ? ": \(notes.count)" : "")")
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
