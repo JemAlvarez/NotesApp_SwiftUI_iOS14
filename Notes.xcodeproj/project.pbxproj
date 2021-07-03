@@ -12,6 +12,8 @@
 		CA268BF5268B7D4900B449E5 /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA268BF4268B7D4900B449E5 /* NoteViewModel.swift */; };
 		CA268BF7268B7F0800B449E5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA268BF6268B7F0800B449E5 /* Constants.swift */; };
 		CA27A901268D7212009C2CF7 /* dark_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CA27A900268D7212009C2CF7 /* dark_icon.png */; };
+		CA315D0B268FE4E0005C97B0 /* NotesWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CA8CB99E268FE33C00CD8E6A /* NotesWidget.intentdefinition */; };
+		CA315D0C268FE4E1005C97B0 /* NotesWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CA8CB99E268FE33C00CD8E6A /* NotesWidget.intentdefinition */; };
 		CA34D1D0268D5B8D007E260C /* LockedNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA34D1CF268D5B8D007E260C /* LockedNoteView.swift */; };
 		CA34D1D3268D64E6007E260C /* SwifterSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CA34D1D2268D64E6007E260C /* SwifterSwift */; };
 		CA5E9E6A268E12A80000D96F /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5E9E69268E12A80000D96F /* ImagePickerView.swift */; };
@@ -24,6 +26,15 @@
 		CA6F6000268A384500B34727 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F5FFF268A384500B34727 /* MainTabView.swift */; };
 		CA6F6002268A387400B34727 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F6001268A387400B34727 /* HomeView.swift */; };
 		CA6F6004268A387E00B34727 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F6003268A387E00B34727 /* SettingsView.swift */; };
+		CA8CB98E268FE31900CD8E6A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA8CB98D268FE31900CD8E6A /* WidgetKit.framework */; };
+		CA8CB990268FE31900CD8E6A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA8CB98F268FE31900CD8E6A /* SwiftUI.framework */; };
+		CA8CB993268FE31900CD8E6A /* NotesWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8CB992268FE31900CD8E6A /* NotesWidget.swift */; };
+		CA8CB995268FE31D00CD8E6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA8CB994268FE31D00CD8E6A /* Assets.xcassets */; };
+		CA8CB999268FE31D00CD8E6A /* NotesWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CA8CB98B268FE31900CD8E6A /* NotesWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CA8CB99F268FE33C00CD8E6A /* NotesWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CA8CB99E268FE33C00CD8E6A /* NotesWidget.intentdefinition */; };
+		CA8CB9A6268FE3D800CD8E6A /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA8CB9A5268FE3D800CD8E6A /* Intents.framework */; };
+		CA8CB9A9268FE3D800CD8E6A /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8CB9A8268FE3D800CD8E6A /* IntentHandler.swift */; };
+		CA8CB9AD268FE3D800CD8E6A /* NotesWdigetIntentExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CA8CB9A4268FE3D800CD8E6A /* NotesWdigetIntentExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CA956A59268A996000AE5D1D /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA956A58268A996000AE5D1D /* SettingsViewModel.swift */; };
 		CAA8FDA5268E4D330006FFF5 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8FDA1268E4D330006FFF5 /* Note+CoreDataClass.swift */; };
 		CAA8FDA6268E4D330006FFF5 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8FDA2268E4D330006FFF5 /* Note+CoreDataProperties.swift */; };
@@ -34,6 +45,38 @@
 		CAEBFEE5268BCAC30048F4DE /* NavigationButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEBFEE4268BCAC30048F4DE /* NavigationButtonsView.swift */; };
 		CAEDCFF0268E629500F116E7 /* NoteDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CA6F5FF8268A335700B34727 /* NoteDataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CA8CB997268FE31D00CD8E6A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CA6F5FD9268A31FD00B34727 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA8CB98A268FE31900CD8E6A;
+			remoteInfo = NotesWidgetExtension;
+		};
+		CA8CB9AB268FE3D800CD8E6A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CA6F5FD9268A31FD00B34727 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA8CB9A3268FE3D800CD8E6A;
+			remoteInfo = NotesWdigetIntentExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CA8CB99A268FE31D00CD8E6A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CA8CB9AD268FE3D800CD8E6A /* NotesWdigetIntentExtension.appex in Embed App Extensions */,
+				CA8CB999268FE31D00CD8E6A /* NotesWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		CA268BF0268B0D7500B449E5 /* TabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewModel.swift; sourceTree = "<group>"; };
@@ -55,6 +98,17 @@
 		CA6F5FFF268A384500B34727 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		CA6F6001268A387400B34727 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CA6F6003268A387E00B34727 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		CA8CB98B268FE31900CD8E6A /* NotesWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotesWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA8CB98D268FE31900CD8E6A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		CA8CB98F268FE31900CD8E6A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		CA8CB992268FE31900CD8E6A /* NotesWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesWidget.swift; sourceTree = "<group>"; };
+		CA8CB994268FE31D00CD8E6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CA8CB996268FE31D00CD8E6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA8CB99E268FE33C00CD8E6A /* NotesWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = NotesWidget.intentdefinition; sourceTree = "<group>"; };
+		CA8CB9A4268FE3D800CD8E6A /* NotesWdigetIntentExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotesWdigetIntentExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA8CB9A5268FE3D800CD8E6A /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
+		CA8CB9A8268FE3D800CD8E6A /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		CA8CB9AA268FE3D800CD8E6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA956A58268A996000AE5D1D /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsViewModel.swift; path = Notes/ViewModel/SettingsViewModel.swift; sourceTree = SOURCE_ROOT; };
 		CAA8FDA1268E4D330006FFF5 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		CAA8FDA2268E4D330006FFF5 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
@@ -72,6 +126,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA34D1D3268D64E6007E260C /* SwifterSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA8CB988268FE31900CD8E6A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA8CB990268FE31900CD8E6A /* SwiftUI.framework in Frameworks */,
+				CA8CB98E268FE31900CD8E6A /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA8CB9A1268FE3D800CD8E6A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA8CB9A6268FE3D800CD8E6A /* Intents.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +172,9 @@
 			isa = PBXGroup;
 			children = (
 				CA6F5FE3268A31FD00B34727 /* Notes */,
+				CA8CB991268FE31900CD8E6A /* NotesWidget */,
+				CA8CB9A7268FE3D800CD8E6A /* NotesWdigetIntentExtension */,
+				CA8CB98C268FE31900CD8E6A /* Frameworks */,
 				CA6F5FE2268A31FD00B34727 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -109,6 +183,8 @@
 			isa = PBXGroup;
 			children = (
 				CA6F5FE1268A31FD00B34727 /* Notes.app */,
+				CA8CB98B268FE31900CD8E6A /* NotesWidgetExtension.appex */,
+				CA8CB9A4268FE3D800CD8E6A /* NotesWdigetIntentExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -164,6 +240,36 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		CA8CB98C268FE31900CD8E6A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CA8CB98D268FE31900CD8E6A /* WidgetKit.framework */,
+				CA8CB98F268FE31900CD8E6A /* SwiftUI.framework */,
+				CA8CB9A5268FE3D800CD8E6A /* Intents.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CA8CB991268FE31900CD8E6A /* NotesWidget */ = {
+			isa = PBXGroup;
+			children = (
+				CA8CB992268FE31900CD8E6A /* NotesWidget.swift */,
+				CA8CB994268FE31D00CD8E6A /* Assets.xcassets */,
+				CA8CB996268FE31D00CD8E6A /* Info.plist */,
+				CA8CB99E268FE33C00CD8E6A /* NotesWidget.intentdefinition */,
+			);
+			path = NotesWidget;
+			sourceTree = "<group>";
+		};
+		CA8CB9A7268FE3D800CD8E6A /* NotesWdigetIntentExtension */ = {
+			isa = PBXGroup;
+			children = (
+				CA8CB9A8268FE3D800CD8E6A /* IntentHandler.swift */,
+				CA8CB9AA268FE3D800CD8E6A /* Info.plist */,
+			);
+			path = NotesWdigetIntentExtension;
+			sourceTree = "<group>";
+		};
 		CAA8FDA0268E4D030006FFF5 /* CoreData Subclasses */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,10 +291,13 @@
 				CA6F5FDD268A31FD00B34727 /* Sources */,
 				CA6F5FDE268A31FD00B34727 /* Frameworks */,
 				CA6F5FDF268A31FD00B34727 /* Resources */,
+				CA8CB99A268FE31D00CD8E6A /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CA8CB998268FE31D00CD8E6A /* PBXTargetDependency */,
+				CA8CB9AC268FE3D800CD8E6A /* PBXTargetDependency */,
 			);
 			name = Notes;
 			packageProductDependencies = (
@@ -197,6 +306,40 @@
 			productName = Notes;
 			productReference = CA6F5FE1268A31FD00B34727 /* Notes.app */;
 			productType = "com.apple.product-type.application";
+		};
+		CA8CB98A268FE31900CD8E6A /* NotesWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA8CB99D268FE31D00CD8E6A /* Build configuration list for PBXNativeTarget "NotesWidgetExtension" */;
+			buildPhases = (
+				CA8CB987268FE31900CD8E6A /* Sources */,
+				CA8CB988268FE31900CD8E6A /* Frameworks */,
+				CA8CB989268FE31900CD8E6A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NotesWidgetExtension;
+			productName = NotesWidgetExtension;
+			productReference = CA8CB98B268FE31900CD8E6A /* NotesWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		CA8CB9A3268FE3D800CD8E6A /* NotesWdigetIntentExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA8CB9AE268FE3D800CD8E6A /* Build configuration list for PBXNativeTarget "NotesWdigetIntentExtension" */;
+			buildPhases = (
+				CA8CB9A0268FE3D800CD8E6A /* Sources */,
+				CA8CB9A1268FE3D800CD8E6A /* Frameworks */,
+				CA8CB9A2268FE3D800CD8E6A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NotesWdigetIntentExtension;
+			productName = NotesWdigetIntentExtension;
+			productReference = CA8CB9A4268FE3D800CD8E6A /* NotesWdigetIntentExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -208,6 +351,12 @@
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					CA6F5FE0268A31FD00B34727 = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					CA8CB98A268FE31900CD8E6A = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					CA8CB9A3268FE3D800CD8E6A = {
 						CreatedOnToolsVersion = 12.5;
 					};
 				};
@@ -229,6 +378,8 @@
 			projectRoot = "";
 			targets = (
 				CA6F5FE0268A31FD00B34727 /* Notes */,
+				CA8CB98A268FE31900CD8E6A /* NotesWidgetExtension */,
+				CA8CB9A3268FE3D800CD8E6A /* NotesWdigetIntentExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -241,6 +392,21 @@
 				CA27A901268D7212009C2CF7 /* dark_icon.png in Resources */,
 				CA6F5FEC268A320000B34727 /* Preview Assets.xcassets in Resources */,
 				CA6F5FE9268A320000B34727 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA8CB989268FE31900CD8E6A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA8CB995268FE31D00CD8E6A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA8CB9A2268FE3D800CD8E6A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +433,7 @@
 				CA6F5FE5268A31FD00B34727 /* NotesApp.swift in Sources */,
 				CA268BF3268B100D00B449E5 /* HomeViewModel.swift in Sources */,
 				CAA8FDA8268E4D330006FFF5 /* NoteImage+CoreDataProperties.swift in Sources */,
+				CA8CB99F268FE33C00CD8E6A /* NotesWidget.intentdefinition in Sources */,
 				CA268BF1268B0D7500B449E5 /* TabViewModel.swift in Sources */,
 				CA268BF7268B7F0800B449E5 /* Constants.swift in Sources */,
 				CA6F6000268A384500B34727 /* MainTabView.swift in Sources */,
@@ -276,7 +443,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CA8CB987268FE31900CD8E6A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA315D0B268FE4E0005C97B0 /* NotesWidget.intentdefinition in Sources */,
+				CA8CB993268FE31900CD8E6A /* NotesWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA8CB9A0268FE3D800CD8E6A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA315D0C268FE4E1005C97B0 /* NotesWidget.intentdefinition in Sources */,
+				CA8CB9A9268FE3D800CD8E6A /* IntentHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CA8CB998268FE31D00CD8E6A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA8CB98A268FE31900CD8E6A /* NotesWidgetExtension */;
+			targetProxy = CA8CB997268FE31D00CD8E6A /* PBXContainerItemProxy */;
+		};
+		CA8CB9AC268FE3D800CD8E6A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA8CB9A3268FE3D800CD8E6A /* NotesWdigetIntentExtension */;
+			targetProxy = CA8CB9AB268FE3D800CD8E6A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		CA6F5FEE268A320000B34727 /* Debug */ = {
@@ -398,6 +596,7 @@
 		CA6F5FF1268A320000B34727 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -405,7 +604,8 @@
 				DEVELOPMENT_TEAM = HB3E67YK35;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Notes/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				INTENTS_CODEGEN_LANGUAGE = Swift;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -421,6 +621,7 @@
 		CA6F5FF2268A320000B34727 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -428,7 +629,8 @@
 				DEVELOPMENT_TEAM = HB3E67YK35;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Notes/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				INTENTS_CODEGEN_LANGUAGE = Swift;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -436,6 +638,94 @@
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jemalvarez.Notes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CA8CB99B268FE31D00CD8E6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HB3E67YK35;
+				INFOPLIST_FILE = NotesWidget/Info.plist;
+				INTENTS_CODEGEN_LANGUAGE = Swift;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jemalvarez.Notes.NotesWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CA8CB99C268FE31D00CD8E6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HB3E67YK35;
+				INFOPLIST_FILE = NotesWidget/Info.plist;
+				INTENTS_CODEGEN_LANGUAGE = Swift;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jemalvarez.Notes.NotesWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CA8CB9AF268FE3D800CD8E6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HB3E67YK35;
+				INFOPLIST_FILE = NotesWdigetIntentExtension/Info.plist;
+				INTENTS_CODEGEN_LANGUAGE = Swift;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jemalvarez.Notes.NotesWdigetIntentExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CA8CB9B0268FE3D800CD8E6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HB3E67YK35;
+				INFOPLIST_FILE = NotesWdigetIntentExtension/Info.plist;
+				INTENTS_CODEGEN_LANGUAGE = Swift;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jemalvarez.Notes.NotesWdigetIntentExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -458,6 +748,24 @@
 			buildConfigurations = (
 				CA6F5FF1268A320000B34727 /* Debug */,
 				CA6F5FF2268A320000B34727 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CA8CB99D268FE31D00CD8E6A /* Build configuration list for PBXNativeTarget "NotesWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA8CB99B268FE31D00CD8E6A /* Debug */,
+				CA8CB99C268FE31D00CD8E6A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CA8CB9AE268FE3D800CD8E6A /* Build configuration list for PBXNativeTarget "NotesWdigetIntentExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA8CB9AF268FE3D800CD8E6A /* Debug */,
+				CA8CB9B0268FE3D800CD8E6A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
