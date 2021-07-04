@@ -25,13 +25,13 @@ struct NoteView: View {
                     // title
                     Section(header: Text("Title")) {
                         TextField("Title", text: $note.title)
-                            .background(Color(colorScheme == .dark ? .systemGray6 : .white))
+                            .background(Color.black.opacity(0))
                     }
                     
                     // description
                     Section(header: Text("Description")) {
                         TextEditor(text: $note.descriptionNote)
-                            .background(Color(colorScheme == .dark ? .systemGray6 : .white))
+                            .background(Color.black.opacity(0))
                     }
                     
                     // image
@@ -87,7 +87,16 @@ struct NoteView: View {
                     // note settings
                     Section(header: Text("Note settings")) {
                         // color picker
+                        #if targetEnvironment(macCatalyst)
+                        HStack {
+                            Text("Pick note color.")
+                            Spacer()
+                            ColorPicker("", selection: $note.color)
+                                .frame(maxWidth: 100)
+                        }
+                        #else
                         ColorPicker("Pick note color.", selection: $note.color)
+                        #endif
                         
                         // favorite
                         Toggle("Favorite", isOn: $note.favorite)

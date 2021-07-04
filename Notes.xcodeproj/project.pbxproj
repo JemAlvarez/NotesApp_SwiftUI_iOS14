@@ -21,7 +21,7 @@
 		CA315D2426900841005C97B0 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA315D2326900841005C97B0 /* ComplicationController.swift */; };
 		CA315D2626900843005C97B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA315D2526900843005C97B0 /* Assets.xcassets */; };
 		CA315D2926900843005C97B0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA315D2826900843005C97B0 /* Preview Assets.xcassets */; };
-		CA315D2D26900843005C97B0 /* NotesWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = CA315D112690083C005C97B0 /* NotesWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CA315D2D26900843005C97B0 /* NotesWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = CA315D112690083C005C97B0 /* NotesWatch.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CA34D1D0268D5B8D007E260C /* LockedNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA34D1CF268D5B8D007E260C /* LockedNoteView.swift */; };
 		CA34D1D3268D64E6007E260C /* SwifterSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CA34D1D2268D64E6007E260C /* SwifterSwift */; };
 		CA5E9E6A268E12A80000D96F /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5E9E69268E12A80000D96F /* ImagePickerView.swift */; };
@@ -139,6 +139,7 @@
 		CA315D2826900843005C97B0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CA315D2A26900843005C97B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA34D1CF268D5B8D007E260C /* LockedNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockedNoteView.swift; sourceTree = "<group>"; };
+		CA51FF332691222F003EF48E /* NotesWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotesWidgetExtension.entitlements; sourceTree = "<group>"; };
 		CA5E9E69268E12A80000D96F /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		CA6F5FE1268A31FD00B34727 /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA6F5FE4268A31FD00B34727 /* NotesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesApp.swift; sourceTree = "<group>"; };
@@ -152,6 +153,8 @@
 		CA6F5FFF268A384500B34727 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		CA6F6001268A387400B34727 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CA6F6003268A387E00B34727 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		CA8616DC269122D2002495ED /* Notes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Notes.entitlements; sourceTree = "<group>"; };
+		CA8616DD269122D2002495ED /* NotesWdigetIntentExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotesWdigetIntentExtension.entitlements; sourceTree = "<group>"; };
 		CA8CB98B268FE31900CD8E6A /* NotesWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotesWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA8CB98D268FE31900CD8E6A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		CA8CB98F268FE31900CD8E6A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -262,6 +265,7 @@
 		CA6F5FD8268A31FD00B34727 = {
 			isa = PBXGroup;
 			children = (
+				CA51FF332691222F003EF48E /* NotesWidgetExtension.entitlements */,
 				CA6F5FE3268A31FD00B34727 /* Notes */,
 				CA8CB991268FE31900CD8E6A /* NotesWidget */,
 				CA8CB9A7268FE3D800CD8E6A /* NotesWdigetIntentExtension */,
@@ -287,6 +291,7 @@
 		CA6F5FE3268A31FD00B34727 /* Notes */ = {
 			isa = PBXGroup;
 			children = (
+				CA8616DC269122D2002495ED /* Notes.entitlements */,
 				CA27A8FF268D7203009C2CF7 /* Icons */,
 				CA314FE5268ABA17005C5EEB /* ViewModel */,
 				CA6F5FF4268A324A00B34727 /* Model */,
@@ -359,6 +364,7 @@
 		CA8CB9A7268FE3D800CD8E6A /* NotesWdigetIntentExtension */ = {
 			isa = PBXGroup;
 			children = (
+				CA8616DD269122D2002495ED /* NotesWdigetIntentExtension.entitlements */,
 				CA8CB9A8268FE3D800CD8E6A /* IntentHandler.swift */,
 				CA8CB9AA268FE3D800CD8E6A /* Info.plist */,
 			);
@@ -637,6 +643,7 @@
 		};
 		CA315D2C26900843005C97B0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = CA315D102690083C005C97B0 /* NotesWatch */;
 			targetProxy = CA315D2B26900843005C97B0 /* PBXContainerItemProxy */;
 		};
@@ -667,6 +674,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jemalvarez.Notes.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -691,6 +699,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jemalvarez.Notes.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -711,6 +720,7 @@
 				DEVELOPMENT_TEAM = HB3E67YK35;
 				IBSC_MODULE = NotesWatch_Extension;
 				INFOPLIST_FILE = NotesWatch/Info.plist;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jemalvarez.Notes.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -731,6 +741,7 @@
 				DEVELOPMENT_TEAM = HB3E67YK35;
 				IBSC_MODULE = NotesWatch_Extension;
 				INFOPLIST_FILE = NotesWatch/Info.plist;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jemalvarez.Notes.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -863,6 +874,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Notes/Notes.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Notes/Preview Content\"";
 				DEVELOPMENT_TEAM = HB3E67YK35;
@@ -877,6 +889,7 @@
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jemalvarez.Notes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -888,6 +901,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Notes/Notes.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Notes/Preview Content\"";
 				DEVELOPMENT_TEAM = HB3E67YK35;
@@ -902,6 +916,7 @@
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jemalvarez.Notes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -912,6 +927,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = NotesWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HB3E67YK35;
 				INFOPLIST_FILE = NotesWidget/Info.plist;
@@ -922,9 +938,11 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jemalvarez.Notes.NotesWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -935,6 +953,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = NotesWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HB3E67YK35;
 				INFOPLIST_FILE = NotesWidget/Info.plist;
@@ -945,9 +964,11 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jemalvarez.Notes.NotesWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -956,6 +977,7 @@
 		CA8CB9AF268FE3D800CD8E6A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = NotesWdigetIntentExtension/NotesWdigetIntentExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HB3E67YK35;
 				INFOPLIST_FILE = NotesWdigetIntentExtension/Info.plist;
@@ -966,9 +988,11 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jemalvarez.Notes.NotesWdigetIntentExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -977,6 +1001,7 @@
 		CA8CB9B0268FE3D800CD8E6A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = NotesWdigetIntentExtension/NotesWdigetIntentExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HB3E67YK35;
 				INFOPLIST_FILE = NotesWdigetIntentExtension/Info.plist;
@@ -987,9 +1012,11 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jemalvarez.Notes.NotesWdigetIntentExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

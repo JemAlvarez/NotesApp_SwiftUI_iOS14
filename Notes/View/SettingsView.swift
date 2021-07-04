@@ -49,6 +49,7 @@ struct SettingsView: View {
                     }
                 }
                 
+                #if !targetEnvironment(macCatalyst)
                 // app icon
                 Section {
                     Text("App Icon")
@@ -87,6 +88,7 @@ struct SettingsView: View {
                     }
                 }
                 .padding(.vertical, 15)
+                #endif
                 
                 // app version
                 Section (header: Text("About")) {
